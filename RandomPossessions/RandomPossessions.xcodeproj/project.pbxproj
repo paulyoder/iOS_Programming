@@ -10,6 +10,7 @@
 		DAAAFBF91539B32A008AD089 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAAFBF81539B32A008AD089 /* Foundation.framework */; };
 		DAAAFBFC1539B32A008AD089 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAAFBFB1539B32A008AD089 /* main.m */; };
 		DAAAFC001539B32A008AD089 /* RandomPossessions.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = DAAAFBFF1539B32A008AD089 /* RandomPossessions.1 */; };
+		DAAAFC081539BCF7008AD089 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAAFC071539BCF7008AD089 /* BNRItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		DAAAFBFB1539B32A008AD089 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DAAAFBFE1539B32A008AD089 /* RandomPossessions-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RandomPossessions-Prefix.pch"; sourceTree = "<group>"; };
 		DAAAFBFF1539B32A008AD089 /* RandomPossessions.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = RandomPossessions.1; sourceTree = "<group>"; };
+		DAAAFC061539BCF7008AD089 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
+		DAAAFC071539BCF7008AD089 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				DAAAFBFB1539B32A008AD089 /* main.m */,
+				DAAAFC061539BCF7008AD089 /* BNRItem.h */,
+				DAAAFC071539BCF7008AD089 /* BNRItem.m */,
 				DAAAFBFF1539B32A008AD089 /* RandomPossessions.1 */,
 				DAAAFBFD1539B32A008AD089 /* Supporting Files */,
 			);
@@ -139,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAAAFBFC1539B32A008AD089 /* main.m in Sources */,
+				DAAAFC081539BCF7008AD089 /* BNRItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
