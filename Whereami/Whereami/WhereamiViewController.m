@@ -8,27 +8,48 @@
 
 #import "WhereamiViewController.h"
 
-@interface WhereamiViewController ()
-
-@end
-
 @implementation WhereamiViewController
 
-- (void)viewDidLoad
+- (id)initWithNibName:(NSString *)nibNameOrNil 
+               bundle:(NSBundle *)nibBundleOrNil
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+  self = [super initWithNibName:nibNameOrNil
+                         bundle:nibBundleOrNil];
+  
+  if (self) {
+    // Create location manager object
+    locationManager = [[CLLocationManager alloc] init];
+    
+    // And we want it to be as accurate as possible
+    // regardless of how much time/power it takes
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    
+    [locationManager setDelegate:self];
+    
+    // Tell our manager to start looking for its location immediately
+    [locationManager startUpdatingLocation];
+  }
+  
+  return self;
 }
 
-- (void)viewDidUnload
+- (void)locationManager:(CLLocationManager *)manager 
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+  NSLog(@"%@", newLocation);
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (void)locationManager:(CLLocationManager *)manager 
+       didFailWithError:(NSError *)error
 {
-  return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+  NSLog(@"Could not find location: %@", error);
+}
+
+- (void)dealloc
+{
+  // Tell the location manager to stop sending us messages
+  [locationManager setDelegate:nil];
 }
 
 @end

@@ -15,6 +15,7 @@
 		DAAAFC2D153AEED2008AD089 /* WhereamiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAAFC2C153AEED2008AD089 /* WhereamiAppDelegate.m */; };
 		DAAAFC30153AEED2008AD089 /* WhereamiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAAFC2F153AEED2008AD089 /* WhereamiViewController.m */; };
 		DAAAFC33153AEED2008AD089 /* WhereamiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAAAFC31153AEED2008AD089 /* WhereamiViewController.xib */; };
+		DAAAFC3A153AF043008AD089 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAAFC39153AF043008AD089 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		DAAAFC2E153AEED2008AD089 /* WhereamiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhereamiViewController.h; sourceTree = "<group>"; };
 		DAAAFC2F153AEED2008AD089 /* WhereamiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhereamiViewController.m; sourceTree = "<group>"; };
 		DAAAFC32153AEED2008AD089 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WhereamiViewController.xib; sourceTree = "<group>"; };
+		DAAAFC39153AF043008AD089 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAAAFC3A153AF043008AD089 /* CoreLocation.framework in Frameworks */,
 				DAAAFC1D153AEED2008AD089 /* UIKit.framework in Frameworks */,
 				DAAAFC1F153AEED2008AD089 /* Foundation.framework in Frameworks */,
 				DAAAFC21153AEED2008AD089 /* CoreGraphics.framework in Frameworks */,
@@ -50,6 +53,7 @@
 		DAAAFC0D153AEED1008AD089 = {
 			isa = PBXGroup;
 			children = (
+				DAAAFC39153AF043008AD089 /* CoreLocation.framework */,
 				DAAAFC22153AEED2008AD089 /* Whereami */,
 				DAAAFC1B153AEED2008AD089 /* Frameworks */,
 				DAAAFC19153AEED2008AD089 /* Products */,
