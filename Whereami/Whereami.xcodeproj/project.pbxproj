@@ -16,6 +16,8 @@
 		DAAAFC30153AEED2008AD089 /* WhereamiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAAFC2F153AEED2008AD089 /* WhereamiViewController.m */; };
 		DAAAFC33153AEED2008AD089 /* WhereamiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAAAFC31153AEED2008AD089 /* WhereamiViewController.xib */; };
 		DAAAFC3A153AF043008AD089 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAAFC39153AF043008AD089 /* CoreLocation.framework */; };
+		DAAAFC3C153AFD99008AD089 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAAFC3B153AFD99008AD089 /* MapKit.framework */; };
+		DAAAFC3F153B187A008AD089 /* BNRMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAAFC3E153B187A008AD089 /* BNRMapPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,9 @@
 		DAAAFC2F153AEED2008AD089 /* WhereamiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhereamiViewController.m; sourceTree = "<group>"; };
 		DAAAFC32153AEED2008AD089 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WhereamiViewController.xib; sourceTree = "<group>"; };
 		DAAAFC39153AF043008AD089 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DAAAFC3B153AFD99008AD089 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DAAAFC3D153B187A008AD089 /* BNRMapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRMapPoint.h; sourceTree = "<group>"; };
+		DAAAFC3E153B187A008AD089 /* BNRMapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRMapPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAAAFC3C153AFD99008AD089 /* MapKit.framework in Frameworks */,
 				DAAAFC3A153AF043008AD089 /* CoreLocation.framework in Frameworks */,
 				DAAAFC1D153AEED2008AD089 /* UIKit.framework in Frameworks */,
 				DAAAFC1F153AEED2008AD089 /* Foundation.framework in Frameworks */,
@@ -53,6 +59,7 @@
 		DAAAFC0D153AEED1008AD089 = {
 			isa = PBXGroup;
 			children = (
+				DAAAFC3B153AFD99008AD089 /* MapKit.framework */,
 				DAAAFC39153AF043008AD089 /* CoreLocation.framework */,
 				DAAAFC22153AEED2008AD089 /* Whereami */,
 				DAAAFC1B153AEED2008AD089 /* Frameworks */,
@@ -85,6 +92,8 @@
 				DAAAFC2C153AEED2008AD089 /* WhereamiAppDelegate.m */,
 				DAAAFC2E153AEED2008AD089 /* WhereamiViewController.h */,
 				DAAAFC2F153AEED2008AD089 /* WhereamiViewController.m */,
+				DAAAFC3D153B187A008AD089 /* BNRMapPoint.h */,
+				DAAAFC3E153B187A008AD089 /* BNRMapPoint.m */,
 				DAAAFC31153AEED2008AD089 /* WhereamiViewController.xib */,
 				DAAAFC23153AEED2008AD089 /* Supporting Files */,
 			);
@@ -168,6 +177,7 @@
 				DAAAFC29153AEED2008AD089 /* main.m in Sources */,
 				DAAAFC2D153AEED2008AD089 /* WhereamiAppDelegate.m in Sources */,
 				DAAAFC30153AEED2008AD089 /* WhereamiViewController.m in Sources */,
+				DAAAFC3F153B187A008AD089 /* BNRMapPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
