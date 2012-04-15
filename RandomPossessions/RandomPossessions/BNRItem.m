@@ -10,23 +10,6 @@
 
 @implementation BNRItem
 
-- (id)initWithItemName:(NSString *)name
-        valueInDollars:(int)value
-          serialNumber:(NSString *)sNumber
-{
-  // Call the superclass's designated initializer
-  self = [super init];
-    
-  if (self) {
-    [self setItemName:name];
-    [self setValueInDollars:value];
-    [self setSerialNumber:sNumber ];
-    dateCreated = [[NSDate alloc] init];
-  }
-    
-  return self;
-}
-
 + (id)randomItem
 {
   // Create an array of three adjectives
@@ -45,8 +28,8 @@
   // Note that NSInteger is not an object, but a type definition
   // for "unsigned long"
   NSString *randomName = [NSString stringWithFormat:@"%@ %@",
-                            [randomAdjectiveList objectAtIndex:adjectiveIndex],
-                            [randomNounList objectAtIndex:nounIndex]];
+                          [randomAdjectiveList objectAtIndex:adjectiveIndex],
+                          [randomNounList objectAtIndex:nounIndex]];
   
   int randomValue = rand() % 100;
   
@@ -64,42 +47,34 @@
   return newItem;
 }
 
+- (id)initWithItemName:(NSString *)name
+        valueInDollars:(int)value
+          serialNumber:(NSString *)sNumber
+{
+  // Call the superclass's designated initializer
+  self = [super init];
+    
+  if (self) {
+    [self setItemName:name];
+    [self setValueInDollars:value];
+    [self setSerialNumber:sNumber ];
+    dateCreated = [[NSDate alloc] init];
+  }
+    
+  return self;
+}
+
 - (id)init
 {
   return [self initWithItemName:@"Item" valueInDollars:0 serialNumber:@""];
 }
 
+@synthesize containedItem, container, itemName, serialNumber, valueInDollars, dateCreated;
 
-- (void)setItemName:(NSString *)str
+- (void)setContainedItem:(BNRItem *)i
 {
-  itemName = str;
-}
-- (NSString *)itemName
-{
-  return itemName;
-}
-
-- (void)setSerialNumber:(NSString *)str
-{
-  serialNumber = str;
-}
-- (NSString *)serialNumber
-{
-  return serialNumber;
-}
-
-- (void)setValueInDollars:(int)i
-{
-  valueInDollars = i;
-}
-- (int)valueInDollars
-{
-  return valueInDollars;
-}
-
-- (NSDate *)dateCreated
-{
-  return dateCreated;
+  containedItem = i;
+  [i setContainer:self];
 }
 
 - (NSString *)description
@@ -113,5 +88,11 @@
     
     return descriptionString;
 }
+
+- (void)dealloc
+{
+  NSLog(@"Destroyed: %@", self);
+}
+
 
 @end
