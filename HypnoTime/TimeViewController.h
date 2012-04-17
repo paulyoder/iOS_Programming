@@ -10,7 +10,7 @@
 
 @interface TimeViewController : UIViewController
 {
-  IBOutlet UILabel *timeLabel;
+  __weak IBOutlet UILabel *timeLabel;
 }
 
 - (IBAction)showCurrentTime:(id)sender;

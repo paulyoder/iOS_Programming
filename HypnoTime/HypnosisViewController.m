@@ -31,4 +31,11 @@
   [self setView:v];
 }
 
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  
+  NSLog(@"HypnosisViewControllerloaded its view");
+}
+
 @end
