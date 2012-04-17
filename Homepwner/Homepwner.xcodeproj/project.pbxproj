@@ -13,6 +13,9 @@
 		DAF44DBF153E290B00725C21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAF44DBD153E290B00725C21 /* InfoPlist.strings */; };
 		DAF44DC1153E290B00725C21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DC0153E290B00725C21 /* main.m */; };
 		DAF44DC5153E290B00725C21 /* HomepwnerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DC4153E290B00725C21 /* HomepwnerAppDelegate.m */; };
+		DAF44DCD153E2A4500725C21 /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DCC153E2A4500725C21 /* ItemsViewController.m */; };
+		DAF44DD0153E2C1200725C21 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DCF153E2C1200725C21 /* BNRItem.m */; };
+		DAF44DD3153E2C8A00725C21 /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DD2153E2C8A00725C21 /* BNRItemStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		DAF44DC2153E290B00725C21 /* Homepwner-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Homepwner-Prefix.pch"; sourceTree = "<group>"; };
 		DAF44DC3153E290B00725C21 /* HomepwnerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomepwnerAppDelegate.h; sourceTree = "<group>"; };
 		DAF44DC4153E290B00725C21 /* HomepwnerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomepwnerAppDelegate.m; sourceTree = "<group>"; };
+		DAF44DCB153E2A4500725C21 /* ItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsViewController.h; sourceTree = "<group>"; };
+		DAF44DCC153E2A4500725C21 /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
+		DAF44DCE153E2C1200725C21 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
+		DAF44DCF153E2C1200725C21 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
+		DAF44DD1153E2C8A00725C21 /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
+		DAF44DD2153E2C8A00725C21 /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +81,12 @@
 		DAF44DBA153E290B00725C21 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				DAF44DCB153E2A4500725C21 /* ItemsViewController.h */,
+				DAF44DCC153E2A4500725C21 /* ItemsViewController.m */,
+				DAF44DCE153E2C1200725C21 /* BNRItem.h */,
+				DAF44DCF153E2C1200725C21 /* BNRItem.m */,
+				DAF44DD1153E2C8A00725C21 /* BNRItemStore.h */,
+				DAF44DD2153E2C8A00725C21 /* BNRItemStore.m */,
 				DAF44DC3153E290B00725C21 /* HomepwnerAppDelegate.h */,
 				DAF44DC4153E290B00725C21 /* HomepwnerAppDelegate.m */,
 				DAF44DBB153E290B00725C21 /* Supporting Files */,
@@ -154,6 +169,9 @@
 			files = (
 				DAF44DC1153E290B00725C21 /* main.m in Sources */,
 				DAF44DC5153E290B00725C21 /* HomepwnerAppDelegate.m in Sources */,
+				DAF44DCD153E2A4500725C21 /* ItemsViewController.m in Sources */,
+				DAF44DD0153E2C1200725C21 /* BNRItem.m in Sources */,
+				DAF44DD3153E2C8A00725C21 /* BNRItemStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
