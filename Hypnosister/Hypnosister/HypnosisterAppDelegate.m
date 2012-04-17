@@ -16,10 +16,33 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
   // Override point for customization after application launch.
   
-  HypnosisView *view = [[HypnosisView alloc] initWithFrame:[[self window] bounds]];
-  [[self window] addSubview:view];
+  CGRect screenRect = [[self window] bounds];
+  
+  // Create the UIScrollView to have the size of the window, matching its size
+  UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:screenRect];
+  [[self window] addSubview:scrollView];
+  
+  // Create the HypnosisView with a frame that is twice the size of the screen
+  HypnosisView *view = [[HypnosisView alloc] initWithFrame:screenRect];
+  [scrollView addSubview:view];
+  CGRect rightRect = screenRect;
+  rightRect.origin.x = screenRect.size.width;
+  [scrollView addSubview:[[HypnosisView alloc] initWithFrame:rightRect]];
+  
+  CGRect scrollRect = screenRect;
+  scrollRect.size.width *= 2.0;
+  [scrollView setContentSize:scrollRect.size];
+  [scrollView setPagingEnabled:YES];
+  
+  BOOL success = [view becomeFirstResponder];
+  if (success) {
+    NSLog(@"Hypnosis became the first responder");
+  } else {
+    NSLog(@"Could not become first responder");
+  }
   
   self.window.backgroundColor = [UIColor whiteColor];
   [self.window makeKeyAndVisible];

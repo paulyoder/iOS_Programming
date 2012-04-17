@@ -10,12 +10,21 @@
 
 @implementation HypnosisView
 
+@synthesize circleColor;
+
+- (void)setCircleColor:(UIColor *)color
+{
+  circleColor = color;
+  [self setNeedsDisplay];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
   if (self) {
     // All HypnosisViews start with a clear background color
     [self setBackgroundColor:[UIColor clearColor]];
+    [self setCircleColor:[UIColor lightGrayColor]];
   }
   return self;
 }
@@ -37,7 +46,7 @@
   CGContextSetLineWidth(ctx, 10);
   
   // The color of the line should be gray (red/green/blue = 0.6, alpha = 1.0);
-  [[UIColor lightGrayColor] setStroke];
+  [[self circleColor] setStroke];
   
   // Draw concentric circles from the outside in
   for (float currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20) {
@@ -79,6 +88,19 @@
   // Draw the string
   [text drawInRect:textRect 
           withFont:font];
+}
+
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+  if (motion == UIEventSubtypeMotionShake) {
+    NSLog(@"Device started shaking!");
+    [self setCircleColor:[UIColor redColor]];
+  }
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+  return YES;
 }
 
 @end
