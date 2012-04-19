@@ -10,6 +10,8 @@
 
 @implementation BNRItem
 
+@synthesize containedItem, container, itemName, serialNumber, valueInDollars, dateCreated, imageKey;
+
 + (id)randomItem
 {
   // Create an array of three adjectives
@@ -68,8 +70,6 @@
 {
   return [self initWithItemName:@"Item" valueInDollars:0 serialNumber:@""];
 }
-
-@synthesize containedItem, container, itemName, serialNumber, valueInDollars, dateCreated;
 
 - (void)setContainedItem:(BNRItem *)i
 {

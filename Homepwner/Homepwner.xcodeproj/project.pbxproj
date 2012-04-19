@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA31119115404918004D1FE3 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = DA31119015404918004D1FE3 /* BNRImageStore.m */; };
 		DAF44DB5153E290B00725C21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF44DB4153E290B00725C21 /* UIKit.framework */; };
 		DAF44DB7153E290B00725C21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF44DB6153E290B00725C21 /* Foundation.framework */; };
 		DAF44DB9153E290B00725C21 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF44DB8153E290B00725C21 /* CoreGraphics.framework */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA31118F15404918004D1FE3 /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
+		DA31119015404918004D1FE3 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
 		DAF44DB0153E290B00725C21 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF44DB4153E290B00725C21 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAF44DB6153E290B00725C21 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,6 +99,8 @@
 				DAF44DC4153E290B00725C21 /* HomepwnerAppDelegate.m */,
 				DAF44DD6153F230E00725C21 /* DetailViewController.h */,
 				DAF44DD7153F230E00725C21 /* DetailViewController.m */,
+				DA31118F15404918004D1FE3 /* BNRImageStore.h */,
+				DA31119015404918004D1FE3 /* BNRImageStore.m */,
 				DAF44DD8153F230E00725C21 /* DetailViewController.xib */,
 				DAF44DBB153E290B00725C21 /* Supporting Files */,
 			);
@@ -182,6 +187,7 @@
 				DAF44DD0153E2C1200725C21 /* BNRItem.m in Sources */,
 				DAF44DD3153E2C8A00725C21 /* BNRItemStore.m in Sources */,
 				DAF44DD9153F230E00725C21 /* DetailViewController.m in Sources */,
+				DA31119115404918004D1FE3 /* BNRImageStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +291,7 @@
 				DAF44DCA153E290B00725C21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
