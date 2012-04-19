@@ -9,6 +9,7 @@
 #import "ItemsViewController.h"
 #import "BNRItem.h"
 #import "BNRItemStore.h"
+#import "DetailViewController.h"
 
 @implementation ItemsViewController
 
@@ -16,7 +17,16 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-
+      [[self navigationItem] setTitle:@"Homepwner"];
+      
+      // Create a new bar button item that will send
+      // addNewItem: to ItemsViewController
+      UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+                                                                           target:self 
+                                                                           action:@selector(addNewItem:)];
+      
+      [[self navigationItem] setRightBarButtonItem:bbi];
+      [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
     }
     return self;
 }
@@ -54,26 +64,10 @@
   [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationTop];
 }
 
-- (UIView *)headerView
+- (void)viewWillAppear:(BOOL)animated
 {
-  // If we haven't loaded the headerView yet...
-  if (!headerView) {
-    // Load HeaderView.xib
-    [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-  }
-  return headerView;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-  return [self headerView];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-  // The height of the header view should be determined from the height of the
-  // view in the XIB file
-  return [[self headerView] bounds].size.height;
+  [super viewWillAppear:animated];
+  [[self tableView] reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView 
@@ -109,6 +103,16 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIp toIndexPath:(NSIndexPath *)toIp
 {
   [[BNRItemStore sharedStore] moveItemAtIndex:fromIp.row toIndex:toIp.row];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  DetailViewController *detailView = [[DetailViewController alloc] init];
+  BNRItem *item = [[[BNRItemStore sharedStore] allItems] objectAtIndex:indexPath.row];
+  [detailView setItem:item];
+  
+  // Push it on top of the navigation controller's stack
+  [[self navigationController] pushViewController:detailView animated:YES];
 }
 
 @end
