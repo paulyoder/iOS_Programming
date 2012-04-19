@@ -27,6 +27,8 @@
       
       [[self navigationItem] setRightBarButtonItem:bbi];
       [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
+      
+      deviceIsIpad = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
     }
     return self;
 }
@@ -34,6 +36,14 @@
 - (id)init
 {
   return [self initWithStyle:UITableViewStyleGrouped];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)oi
+{
+  if (deviceIsIpad)
+    return YES;
+  else
+    return (oi == UIInterfaceOrientationPortrait);
 }
 
 - (IBAction)toggleEditingMode:(id)sender
@@ -56,12 +66,17 @@
 {
   BNRItem *item = [[BNRItemStore sharedStore] createItem];
   
-  // Make a new index path for the 0th section, last row
-  int newRowIndex = [[[BNRItemStore sharedStore] allItems] indexOfObject:item];
-  NSIndexPath *ip = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
+  DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:YES];
+  [detailViewController setItem: item];
+  [detailViewController setDismissBlock:^{
+    [[self tableView] reloadData];
+  }];
   
-  // Insert this new row into the table
-  [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationTop];
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+  [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+  [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+  
+  [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -107,7 +122,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  DetailViewController *detailView = [[DetailViewController alloc] init];
+  DetailViewController *detailView = [[DetailViewController alloc] initForNewItem:NO];
   BNRItem *item = [[[BNRItemStore sharedStore] allItems] objectAtIndex:indexPath.row];
   [detailView setItem:item];
   

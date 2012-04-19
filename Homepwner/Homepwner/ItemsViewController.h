@@ -10,7 +10,7 @@
 
 @interface ItemsViewController : UITableViewController
 {
-
+  BOOL deviceIsIpad;
 }
 
 - (IBAction)addNewItem:(id)sender;
