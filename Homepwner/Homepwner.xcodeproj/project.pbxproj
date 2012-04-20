@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		DA31119115404918004D1FE3 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = DA31119015404918004D1FE3 /* BNRImageStore.m */; };
+		DA3111951540A9D4004D1FE3 /* HomepwnerItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3111941540A9D4004D1FE3 /* HomepwnerItemCell.m */; };
+		DA3111971540AA1A004D1FE3 /* HomepwnerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA3111961540AA1A004D1FE3 /* HomepwnerItemCell.xib */; };
+		DA31119F1541F672004D1FE3 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA31119D1541F672004D1FE3 /* ImageViewController.m */; };
+		DA3111A01541F672004D1FE3 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA31119E1541F672004D1FE3 /* ImageViewController.xib */; };
 		DAF44DB5153E290B00725C21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF44DB4153E290B00725C21 /* UIKit.framework */; };
 		DAF44DB7153E290B00725C21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF44DB6153E290B00725C21 /* Foundation.framework */; };
 		DAF44DB9153E290B00725C21 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF44DB8153E290B00725C21 /* CoreGraphics.framework */; };
@@ -24,6 +28,12 @@
 /* Begin PBXFileReference section */
 		DA31118F15404918004D1FE3 /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
 		DA31119015404918004D1FE3 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
+		DA3111931540A9D4004D1FE3 /* HomepwnerItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepwnerItemCell.h; sourceTree = "<group>"; };
+		DA3111941540A9D4004D1FE3 /* HomepwnerItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepwnerItemCell.m; sourceTree = "<group>"; };
+		DA3111961540AA1A004D1FE3 /* HomepwnerItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomepwnerItemCell.xib; sourceTree = "<group>"; };
+		DA31119C1541F672004D1FE3 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		DA31119D1541F672004D1FE3 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		DA31119E1541F672004D1FE3 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		DAF44DB0153E290B00725C21 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF44DB4153E290B00725C21 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAF44DB6153E290B00725C21 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,19 +99,25 @@
 		DAF44DBA153E290B00725C21 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
-				DAF44DCB153E2A4500725C21 /* ItemsViewController.h */,
-				DAF44DCC153E2A4500725C21 /* ItemsViewController.m */,
+				DA31118F15404918004D1FE3 /* BNRImageStore.h */,
+				DA31119015404918004D1FE3 /* BNRImageStore.m */,
 				DAF44DCE153E2C1200725C21 /* BNRItem.h */,
 				DAF44DCF153E2C1200725C21 /* BNRItem.m */,
 				DAF44DD1153E2C8A00725C21 /* BNRItemStore.h */,
 				DAF44DD2153E2C8A00725C21 /* BNRItemStore.m */,
-				DAF44DC3153E290B00725C21 /* HomepwnerAppDelegate.h */,
-				DAF44DC4153E290B00725C21 /* HomepwnerAppDelegate.m */,
 				DAF44DD6153F230E00725C21 /* DetailViewController.h */,
 				DAF44DD7153F230E00725C21 /* DetailViewController.m */,
-				DA31118F15404918004D1FE3 /* BNRImageStore.h */,
-				DA31119015404918004D1FE3 /* BNRImageStore.m */,
 				DAF44DD8153F230E00725C21 /* DetailViewController.xib */,
+				DAF44DC3153E290B00725C21 /* HomepwnerAppDelegate.h */,
+				DAF44DC4153E290B00725C21 /* HomepwnerAppDelegate.m */,
+				DA3111931540A9D4004D1FE3 /* HomepwnerItemCell.h */,
+				DA3111941540A9D4004D1FE3 /* HomepwnerItemCell.m */,
+				DA3111961540AA1A004D1FE3 /* HomepwnerItemCell.xib */,
+				DA31119C1541F672004D1FE3 /* ImageViewController.h */,
+				DA31119D1541F672004D1FE3 /* ImageViewController.m */,
+				DA31119E1541F672004D1FE3 /* ImageViewController.xib */,
+				DAF44DCB153E2A4500725C21 /* ItemsViewController.h */,
+				DAF44DCC153E2A4500725C21 /* ItemsViewController.m */,
 				DAF44DBB153E290B00725C21 /* Supporting Files */,
 			);
 			path = Homepwner;
@@ -171,6 +187,8 @@
 			files = (
 				DAF44DBF153E290B00725C21 /* InfoPlist.strings in Resources */,
 				DAF44DDA153F230E00725C21 /* DetailViewController.xib in Resources */,
+				DA3111971540AA1A004D1FE3 /* HomepwnerItemCell.xib in Resources */,
+				DA3111A01541F672004D1FE3 /* ImageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +206,8 @@
 				DAF44DD3153E2C8A00725C21 /* BNRItemStore.m in Sources */,
 				DAF44DD9153F230E00725C21 /* DetailViewController.m in Sources */,
 				DA31119115404918004D1FE3 /* BNRImageStore.m in Sources */,
+				DA3111951540A9D4004D1FE3 /* HomepwnerItemCell.m in Sources */,
+				DA31119F1541F672004D1FE3 /* ImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

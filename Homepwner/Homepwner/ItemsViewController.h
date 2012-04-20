@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ItemsViewController : UITableViewController
+@interface ItemsViewController : UITableViewController <UIPopoverControllerDelegate>
 {
   BOOL deviceIsIpad;
+  UIPopoverController *imagePopover;
 }
 
 - (IBAction)addNewItem:(id)sender;

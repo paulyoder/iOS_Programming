@@ -10,6 +10,9 @@
 #import "BNRItem.h"
 #import "BNRItemStore.h"
 #import "DetailViewController.h"
+#import "HomepwnerItemCell.h"
+#import "BNRImageStore.h"
+#import "imageViewController.h"
 
 @implementation ItemsViewController
 
@@ -85,6 +88,59 @@
   [[self tableView] reloadData];
 }
 
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  
+  // Load the NIB which contains the cell
+  UINib *nib = [UINib nibWithNibName:@"HomepwnerItemCell" bundle:nil];
+  
+  // Register this NIB which contains the cell
+  [[self tableView] registerNib:nib forCellReuseIdentifier:@"HomepwnerItemCell"];
+}
+
+- (void)showImage:(id)sender atIndexPath:(NSIndexPath *)ip
+{
+  NSLog(@"Going to show the image for %@", ip);
+  
+  if (deviceIsIpad) {
+    // Get the item for the index path
+    BNRItem *item = [[[BNRItemStore sharedStore] allItems] objectAtIndex:ip.row];
+    NSString *imageKey = [item imageKey];
+    
+    // If there is no image, we don't need to display anything
+    UIImage *image = [[BNRImageStore sharedStore] imageForKey:imageKey];
+    if (!image)
+      return;
+    
+    // Make a rectangle that the frame of the button relative to our table view
+    CGRect rect = [[self view] convertRect:[sender bounds] fromView:sender];
+    
+    // Create a new ImageViewController and set its image
+    ImageViewController *ivc = [[ImageViewController alloc] init];
+    [ivc setImage:image];
+    
+    // Present a 600x600 popover from the rect
+    imagePopover = [[UIPopoverController alloc] initWithContentViewController:ivc];
+    [imagePopover setDelegate:self];
+    [imagePopover setPopoverContentSize:CGSizeMake(600, 600)];
+    [imagePopover presentPopoverFromRect:rect 
+                                  inView:[self view] 
+                permittedArrowDirections:UIPopoverArrowDirectionAny 
+                                animated:YES];
+  }
+}
+
+#pragma mark popover Delegate
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+  [imagePopover dismissPopoverAnimated:YES];
+  imagePopover = nil;
+}
+
+#pragma mark tableView Delegate
+
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section
 {
@@ -96,17 +152,20 @@
 {
   BNRItem *item = [[[BNRItemStore sharedStore] allItems] objectAtIndex:[indexPath row]];
   
-
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-  if (!cell)
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                  reuseIdentifier:@"UITableViewCell"];
+  HomepwnerItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomepwnerItemCell"];
+  [cell setController:self];
+  [cell setTableView:tableView];
+  [[cell thumbnailView] setImage:[item thumbnail]];
+  [[cell nameLabel] setText:[item itemName]];
+  [[cell serialNumberLabel] setText:[item serialNumber]];
+  [[cell valueLabel] setText:[NSString stringWithFormat:@"$%d", [item valueInDollars]]];
   
-  [[cell textLabel] setText:[item description]];
   return cell;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView 
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
+     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (editingStyle == UITableViewCellEditingStyleDelete) {
     BNRItem *item = [[[BNRItemStore sharedStore] allItems] objectAtIndex:[indexPath row]];
@@ -115,12 +174,15 @@
   }
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIp toIndexPath:(NSIndexPath *)toIp
+- (void)tableView:(UITableView *)tableView 
+    moveRowAtIndexPath:(NSIndexPath *)fromIp 
+           toIndexPath:(NSIndexPath *)toIp
 {
   [[BNRItemStore sharedStore] moveItemAtIndex:fromIp.row toIndex:toIp.row];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView 
+    didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   DetailViewController *detailView = [[DetailViewController alloc] initForNewItem:NO];
   BNRItem *item = [[[BNRItemStore sharedStore] allItems] objectAtIndex:indexPath.row];

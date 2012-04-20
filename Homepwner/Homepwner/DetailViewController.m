@@ -165,8 +165,11 @@
   if (oldKey) {
     [[BNRImageStore sharedStore] deleteImageForKey:oldKey];
   }
+  
   // Get picked image from info dictionary
   UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+  
+  [item setThumbnailDataFromImage:image];
   
   CFUUIDRef newUniqueID = CFUUIDCreate(kCFAllocatorDefault);
   CFStringRef newUniqueIDString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueID);
