@@ -16,12 +16,32 @@
 {
   self = [super init];
   if (self) {
-    NSString *path = [self itemArchivePath];
-    allItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    // Read in Homepwner.xcdatamodeld
+    model = [NSManagedObjectModel mergedModelFromBundles:nil];
     
-    // if the array hadn't been saved previously, create a new empty one
-    if (!allItems)
-      allItems = [[NSMutableArray alloc] init];
+    NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+    
+    // Where does the SQLite file go?
+    NSString *path = [self itemArchivePath];
+    NSURL *storeURL = [NSURL fileURLWithPath:path];
+    
+    NSError *error = nil;
+    
+    if (![psc addPersistentStoreWithType:NSSQLiteStoreType 
+                           configuration:nil 
+                                     URL:storeURL 
+                                 options:nil 
+                                   error:&error])
+      [NSException raise:@"Open failed" format:@"Reason: %@", [error localizedDescription]];
+    
+    // Create the managed object context
+    context = [[NSManagedObjectContext alloc] init];
+    [context setPersistentStoreCoordinator:psc];
+    
+    // The managed object context can manage undo, but we don't need it
+    [context setUndoManager:nil];
+    
+    [self loadAllItems];
   }
   return self;
 }
@@ -47,7 +67,17 @@
 
 - (BNRItem *)createItem
 {
-  BNRItem *item = [[BNRItem alloc] init];
+  BNRItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"BNRItem" 
+                                                inManagedObjectContext:context];
+  
+  double order;
+  if ([allItems count ] == 0)
+    order = 1.0;
+  else 
+    order = [[allItems lastObject] orderingValue] + 1.0;
+  [item setOrderingValue:order];
+  NSLog(@"Adding after %d items, order = %.2f", [allItems count], order);
+
   [allItems addObject:item];
   return item;
 }
@@ -55,6 +85,7 @@
 - (void)removeItem:(BNRItem *)item
 {
   [[BNRImageStore sharedStore] deleteImageForKey:[item imageKey]];
+  [context deleteObject:item];
   [allItems removeObjectIdenticalTo:item];
 }
 
@@ -64,6 +95,28 @@
   BNRItem *item = [allItems objectAtIndex:from];
   [allItems removeObjectAtIndex:from];
   [allItems insertObject:item atIndex:to];
+  
+  // Computing a new orderValue for the object that was moved
+  double lowerBound = 0.0;
+  
+  // Is there an object before it?
+  if (to > 0)
+    lowerBound = [[allItems objectAtIndex:to - 1] orderingValue];
+  else
+    lowerBound = [[allItems objectAtIndex:1] orderingValue] + 2.0;
+  
+  double upperBound = 0.0;
+  
+  // Is there an object after it?
+  if (to < [allItems count])
+    upperBound = [[allItems objectAtIndex:to + 1] orderingValue];
+  else 
+    upperBound = [[allItems objectAtIndex:to - 1] orderingValue] + 2.0;
+  
+  double newOrderValue = (lowerBound + upperBound) / 2.0;
+  
+  NSLog(@"moving to order %f", newOrderValue);
+  [item setOrderingValue:newOrderValue];
 }
 
 - (NSString *)itemArchivePath
@@ -73,12 +126,73 @@
   // Get the one and only document directory from that list
   NSString *documentDirectory = [documentDirectories objectAtIndex:0];
   
-  return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
+  return [documentDirectory stringByAppendingPathComponent:@"store.data"];
 }
 
 - (BOOL)saveChanges
 {
-  return [NSKeyedArchiver archiveRootObject:allItems toFile:[self itemArchivePath]]; 
+  NSError *err = nil;
+  BOOL success = [context save:&err];
+  if (!success)
+    NSLog(@"Error saving: %@", [err localizedDescription]);
+  return success;
+}
+
+- (void)loadAllItems
+{
+  if (allItems)
+    return;
+  
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  NSEntityDescription *ent = [[model entitiesByName] objectForKey:@"BNRItem"];
+  [request setEntity:ent];
+  
+  NSSortDescriptor *sorter = [NSSortDescriptor sortDescriptorWithKey:@"orderingValue" ascending:YES];
+  [request setSortDescriptors:[NSArray arrayWithObject:sorter]];
+  
+  NSError *err;
+  NSArray *result = [context executeFetchRequest:request error:&err];
+  if (!result)
+    [NSException raise:@"Fetch failed" format:@"Reason: %@", [err localizedDescription]];
+  
+  allItems = [[NSMutableArray alloc] initWithArray:result];
+}
+
+- (NSArray *)allAssetTypes
+{
+  if (allAssetTypes)
+    return allAssetTypes;
+  
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  NSEntityDescription *ent = [[model entitiesByName] objectForKey:@"BNRAssetType"];
+  [request setEntity:ent];
+  
+  NSError *err;
+  NSArray *results = [context executeFetchRequest:request error:&err];
+  if (!results)
+    [NSException raise:@"Fetch failed" format:@"Reason: %@", [err localizedDescription]];
+  allAssetTypes = [results mutableCopy];
+  
+  if ([allAssetTypes count] > 0)
+    return allAssetTypes;
+  
+  // Seed asset types if none exist
+  NSManagedObject *type = [NSEntityDescription insertNewObjectForEntityForName:@"BNRAssetType" 
+                                                         inManagedObjectContext:context];
+  [type setValue:@"Furniture" forKey:@"label"];
+  [allAssetTypes addObject:type];
+  
+  type = [NSEntityDescription insertNewObjectForEntityForName:@"BNRAssetType" 
+                                       inManagedObjectContext:context];
+  [type setValue:@"Jewlry" forKey:@"label"];
+  [allAssetTypes addObject:type];
+  
+  type = [NSEntityDescription insertNewObjectForEntityForName:@"BNRAssetType" 
+                                       inManagedObjectContext:context];
+  [type setValue:@"Electronics" forKey:@"label"];
+  [allAssetTypes addObject:type];
+  
+  return allAssetTypes;
 }
 
 @end

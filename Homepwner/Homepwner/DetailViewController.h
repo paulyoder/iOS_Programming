@@ -18,6 +18,7 @@
   __weak IBOutlet UITextField *valueField;
   __weak IBOutlet UILabel *dateLabel;
   __weak IBOutlet UIImageView *imageView;
+  __weak IBOutlet UIButton *assetTypeButton;
   
   UIPopoverController *imagePickerPopover;
   BOOL deviceIsIpad;
@@ -29,5 +30,6 @@
 - (id)initForNewItem:(BOOL)isNew;
 - (IBAction)takePicture:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
+- (IBAction)assetTypeButtonTapped:(id)sender;
 
 @end

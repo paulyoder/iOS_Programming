@@ -12,6 +12,10 @@
 		DA3111971540AA1A004D1FE3 /* HomepwnerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA3111961540AA1A004D1FE3 /* HomepwnerItemCell.xib */; };
 		DA31119F1541F672004D1FE3 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA31119D1541F672004D1FE3 /* ImageViewController.m */; };
 		DA3111A01541F672004D1FE3 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA31119E1541F672004D1FE3 /* ImageViewController.xib */; };
+		DAD2E598154978600009BF67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD2E597154978600009BF67 /* CoreData.framework */; };
+		DAD2E59C154978C50009BF67 /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAD2E59A154978C50009BF67 /* Homepwner.xcdatamodeld */; };
+		DAD2E59F15497D3B0009BF67 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD2E59E15497D3B0009BF67 /* BNRItem.m */; };
+		DAD2E5A21549DDAF0009BF67 /* AssetTypePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD2E5A11549DDAE0009BF67 /* AssetTypePicker.m */; };
 		DAF44DB5153E290B00725C21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF44DB4153E290B00725C21 /* UIKit.framework */; };
 		DAF44DB7153E290B00725C21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF44DB6153E290B00725C21 /* Foundation.framework */; };
 		DAF44DB9153E290B00725C21 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF44DB8153E290B00725C21 /* CoreGraphics.framework */; };
@@ -19,7 +23,6 @@
 		DAF44DC1153E290B00725C21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DC0153E290B00725C21 /* main.m */; };
 		DAF44DC5153E290B00725C21 /* HomepwnerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DC4153E290B00725C21 /* HomepwnerAppDelegate.m */; };
 		DAF44DCD153E2A4500725C21 /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DCC153E2A4500725C21 /* ItemsViewController.m */; };
-		DAF44DD0153E2C1200725C21 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DCF153E2C1200725C21 /* BNRItem.m */; };
 		DAF44DD3153E2C8A00725C21 /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DD2153E2C8A00725C21 /* BNRItemStore.m */; };
 		DAF44DD9153F230E00725C21 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44DD7153F230E00725C21 /* DetailViewController.m */; };
 		DAF44DDA153F230E00725C21 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF44DD8153F230E00725C21 /* DetailViewController.xib */; };
@@ -34,6 +37,12 @@
 		DA31119C1541F672004D1FE3 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		DA31119D1541F672004D1FE3 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		DA31119E1541F672004D1FE3 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
+		DAD2E597154978600009BF67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DAD2E59B154978C50009BF67 /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
+		DAD2E59D15497D3B0009BF67 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
+		DAD2E59E15497D3B0009BF67 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
+		DAD2E5A01549DDAE0009BF67 /* AssetTypePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetTypePicker.h; sourceTree = "<group>"; };
+		DAD2E5A11549DDAE0009BF67 /* AssetTypePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetTypePicker.m; sourceTree = "<group>"; };
 		DAF44DB0153E290B00725C21 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF44DB4153E290B00725C21 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAF44DB6153E290B00725C21 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -46,8 +55,6 @@
 		DAF44DC4153E290B00725C21 /* HomepwnerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomepwnerAppDelegate.m; sourceTree = "<group>"; };
 		DAF44DCB153E2A4500725C21 /* ItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsViewController.h; sourceTree = "<group>"; };
 		DAF44DCC153E2A4500725C21 /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
-		DAF44DCE153E2C1200725C21 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
-		DAF44DCF153E2C1200725C21 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		DAF44DD1153E2C8A00725C21 /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
 		DAF44DD2153E2C8A00725C21 /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
 		DAF44DD6153F230E00725C21 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -60,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD2E598154978600009BF67 /* CoreData.framework in Frameworks */,
 				DAF44DB5153E290B00725C21 /* UIKit.framework in Frameworks */,
 				DAF44DB7153E290B00725C21 /* Foundation.framework in Frameworks */,
 				DAF44DB9153E290B00725C21 /* CoreGraphics.framework in Frameworks */,
@@ -72,6 +80,7 @@
 		DAF44DA5153E290B00725C21 = {
 			isa = PBXGroup;
 			children = (
+				DAD2E59A154978C50009BF67 /* Homepwner.xcdatamodeld */,
 				DAF44DBA153E290B00725C21 /* Homepwner */,
 				DAF44DB3153E290B00725C21 /* Frameworks */,
 				DAF44DB1153E290B00725C21 /* Products */,
@@ -89,6 +98,7 @@
 		DAF44DB3153E290B00725C21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAD2E597154978600009BF67 /* CoreData.framework */,
 				DAF44DB4153E290B00725C21 /* UIKit.framework */,
 				DAF44DB6153E290B00725C21 /* Foundation.framework */,
 				DAF44DB8153E290B00725C21 /* CoreGraphics.framework */,
@@ -99,12 +109,14 @@
 		DAF44DBA153E290B00725C21 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				DAD2E59D15497D3B0009BF67 /* BNRItem.h */,
+				DAD2E59E15497D3B0009BF67 /* BNRItem.m */,
 				DA31118F15404918004D1FE3 /* BNRImageStore.h */,
 				DA31119015404918004D1FE3 /* BNRImageStore.m */,
-				DAF44DCE153E2C1200725C21 /* BNRItem.h */,
-				DAF44DCF153E2C1200725C21 /* BNRItem.m */,
 				DAF44DD1153E2C8A00725C21 /* BNRItemStore.h */,
 				DAF44DD2153E2C8A00725C21 /* BNRItemStore.m */,
+				DAD2E5A01549DDAE0009BF67 /* AssetTypePicker.h */,
+				DAD2E5A11549DDAE0009BF67 /* AssetTypePicker.m */,
 				DAF44DD6153F230E00725C21 /* DetailViewController.h */,
 				DAF44DD7153F230E00725C21 /* DetailViewController.m */,
 				DAF44DD8153F230E00725C21 /* DetailViewController.xib */,
@@ -202,12 +214,14 @@
 				DAF44DC1153E290B00725C21 /* main.m in Sources */,
 				DAF44DC5153E290B00725C21 /* HomepwnerAppDelegate.m in Sources */,
 				DAF44DCD153E2A4500725C21 /* ItemsViewController.m in Sources */,
-				DAF44DD0153E2C1200725C21 /* BNRItem.m in Sources */,
 				DAF44DD3153E2C8A00725C21 /* BNRItemStore.m in Sources */,
 				DAF44DD9153F230E00725C21 /* DetailViewController.m in Sources */,
 				DA31119115404918004D1FE3 /* BNRImageStore.m in Sources */,
 				DA3111951540A9D4004D1FE3 /* HomepwnerItemCell.m in Sources */,
 				DA31119F1541F672004D1FE3 /* ImageViewController.m in Sources */,
+				DAD2E59C154978C50009BF67 /* Homepwner.xcdatamodeld in Sources */,
+				DAD2E59F15497D3B0009BF67 /* BNRItem.m in Sources */,
+				DAD2E5A21549DDAF0009BF67 /* AssetTypePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +332,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DAD2E59A154978C50009BF67 /* Homepwner.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DAD2E59B154978C50009BF67 /* Homepwner.xcdatamodel */,
+			);
+			currentVersion = DAD2E59B154978C50009BF67 /* Homepwner.xcdatamodel */;
+			path = Homepwner.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DAF44DA7153E290B00725C21 /* Project object */;
 }

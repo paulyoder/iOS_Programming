@@ -10,6 +10,7 @@
 #import "BNRItem.h"
 #import "BNRImageStore.h"
 #import "BNRItemStore.h"
+#import "AssetTypePicker.h"
 
 @implementation DetailViewController
 
@@ -75,7 +76,8 @@
   // Create a NSDateFormatter that will turn a date into a simple date string
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-  [dateLabel setText:[dateFormatter stringFromDate:[item dateCreated]]];
+  NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[item dateCreated]];
+  [dateLabel setText:[dateFormatter stringFromDate:date]];
   
   NSString *imageKey = [item imageKey];
   
@@ -86,6 +88,13 @@
   else {
     [imageView setImage:nil];
   }
+  
+  NSString *typeLabel = [[item assetType] valueForKey:@"label"];
+  if (!typeLabel)
+    typeLabel = @"None";
+  
+  [assetTypeButton setTitle:[NSString stringWithFormat:@"Type: %@", typeLabel] 
+                   forState:UIControlStateNormal];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -107,6 +116,7 @@
   valueField = nil;
   dateLabel = nil;
     imageView = nil;
+  assetTypeButton = nil;
   [super viewDidUnload];
 }
 
@@ -216,6 +226,16 @@
   [[BNRItemStore sharedStore] removeItem:item];
   [[self presentingViewController] dismissViewControllerAnimated:YES 
                                                       completion:dismissBlock];
+}
+
+- (void)assetTypeButtonTapped:(id)sender
+{
+  [[self view] endEditing:YES];
+  
+  AssetTypePicker *picker = [[AssetTypePicker alloc] init];
+  [picker setItem:item];
+  
+  [[self navigationController] pushViewController:picker animated:YES];
 }
 
 @end

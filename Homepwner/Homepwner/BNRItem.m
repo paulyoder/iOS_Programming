@@ -1,136 +1,39 @@
 //
 //  BNRItem.m
-//  RandomPossessions
+//  Homepwner
 //
-//  Created by Paul Yoder on 4/14/12.
+//  Created by Paul Yoder on 4/26/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "BNRItem.h"
 
+
 @implementation BNRItem
 
-@synthesize containedItem, container, itemName, serialNumber, valueInDollars,
-  dateCreated, imageKey, thumbnail, thumbnailData;
+@dynamic itemName;
+@dynamic serialNumber;
+@dynamic valueInDollars;
+@dynamic dateCreated;
+@dynamic imageKey;
+@dynamic thumbnailData;
+@dynamic thumbnail;
+@dynamic orderingValue;
+@dynamic assetType;
 
-+ (id)randomItem
+- (void)awakeFromFetch
 {
-  // Create an array of three adjectives
-  NSArray *randomAdjectiveList = [NSArray arrayWithObjects:@"Fluffy", @"Rusty", @"Shiny", nil];
+  [super awakeFromFetch];
   
-  // Create an array of three nouns
-  NSArray *randomNounList = [NSArray arrayWithObjects:@"Bear", @"Spork", @"Mac", nil];
-  
-  // Get the index of a random adjective/noun from the lists
-  // Note: The % operator, called the modulo operator, gives
-  // you the remainder. So adjectiveIndex is a random number
-  // from 0 to 2 inclusive.
-  NSInteger adjectiveIndex = rand() % [randomAdjectiveList count];
-  NSInteger nounIndex = rand() % [randomNounList count];
-  
-  // Note that NSInteger is not an object, but a type definition
-  // for "unsigned long"
-  NSString *randomName = [NSString stringWithFormat:@"%@ %@",
-                          [randomAdjectiveList objectAtIndex:adjectiveIndex],
-                          [randomNounList objectAtIndex:nounIndex]];
-  
-  int randomValue = rand() % 100;
-  
-  NSString *randomSerialNumber = [NSString stringWithFormat:@"%c%c%c%c%c",
-                                  '0' + rand() % 10,
-                                  'A' + rand() % 26,
-                                  '0' + rand() % 10,
-                                  'A' + rand() % 26,
-                                  '0' + rand() % 10];
-  
-  BNRItem *newItem = [[self alloc] initWithItemName:randomName 
-                                     valueInDollars:randomValue 
-                                       serialNumber:randomSerialNumber];
-  
-  return newItem;
+  UIImage *thumbnail = [UIImage imageWithData:[self thumbnailData]];
+  [self setPrimitiveValue:thumbnail forKey:@"thumbnail"];
 }
 
-- (id)initWithItemName:(NSString *)name
-        valueInDollars:(int)value
-          serialNumber:(NSString *)sNumber
+- (void)awakeFromInsert
 {
-  // Call the superclass's designated initializer
-  self = [super init];
-    
-  if (self) {
-    [self setItemName:name];
-    [self setValueInDollars:value];
-    [self setSerialNumber:sNumber ];
-    dateCreated = [[NSDate alloc] init];
-  }
-    
-  return self;
-}
-
-- (id)init
-{
-  return [self initWithItemName:@"Item" valueInDollars:0 serialNumber:@""];
-}
-
-- (void)setContainedItem:(BNRItem *)i
-{
-  containedItem = i;
-  [i setContainer:self];
-}
-
-- (NSString *)description
-{
-    NSString *descriptionString =
-        [[NSString alloc] initWithFormat:@"%@ (%@): Worth $%d, recorded on %@",
-            itemName,
-            serialNumber,
-            valueInDollars,
-            dateCreated];
-    
-    return descriptionString;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-  [aCoder encodeObject:itemName forKey:@"itemName"];
-  [aCoder encodeObject:serialNumber forKey:@"serialNumber"];
-  [aCoder encodeObject:dateCreated forKey:@"dateCreated"];
-  [aCoder encodeObject:imageKey forKey:@"imageKey"];
-  [aCoder encodeObject:thumbnailData forKey:@"thumbnailData"];
-  
-  [aCoder encodeInt:valueInDollars forKey:@"valueInDollars"];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-  self = [super init];
-  if (self) {
-    [self setItemName:[aDecoder decodeObjectForKey:@"itemName"]];
-    [self setSerialNumber:[aDecoder decodeObjectForKey:@"serialNumber"]];
-    [self setImageKey:[aDecoder decodeObjectForKey:@"imageKey"]];
-    [self setValueInDollars:[aDecoder decodeIntForKey:@"valueInDollars"]];
-    [self setThumbnailData:[aDecoder decodeObjectForKey:@"thumbnailData"]];
-    dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
-  }
-  return self;
-}
-
-- (void)dealloc
-{
-  NSLog(@"Destroyed: %@", self);
-}
-
-- (UIImage *)thumbnail
-{
-  // If there is no thumbnailData, then I have no thumbnail to return
-  if (!thumbnailData)
-    return nil;
-  
-  // If I have not yet created my thumbnail image from my data, do so now
-  if (!thumbnail)
-    thumbnail = [UIImage imageWithData:thumbnailData];
-  
-  return thumbnail;
+  [super awakeFromInsert];
+  NSTimeInterval t= [[NSDate date] timeIntervalSinceReferenceDate];
+  [self setDateCreated:t];
 }
 
 - (void)setThumbnailDataFromImage:(UIImage *)image
