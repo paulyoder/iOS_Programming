@@ -9,6 +9,8 @@
 #import "WhereamiViewController.h"
 #import "BNRMapPoint.h"
 
+NSString * const WhereamiMapTypePrefKey = @"WhereamiMapTypePrefKey";
+
 @implementation WhereamiViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil 
@@ -31,6 +33,13 @@
   return self;
 }
 
++ (void)initialize
+{
+  NSDictionary *defaults = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] 
+                                                       forKey:WhereamiMapTypePrefKey];
+  
+  [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+}
 
 - (void)dealloc
 {
@@ -67,6 +76,12 @@
 - (void)viewDidLoad
 {
   [worldView setShowsUserLocation:YES];
+  
+  NSInteger mapTypeValue = [[NSUserDefaults standardUserDefaults] 
+                            integerForKey:WhereamiMapTypePrefKey];
+  
+  [mapTypeControl setSelectedSegmentIndex:mapTypeValue];
+  [self changeMapType:mapTypeControl];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -84,6 +99,28 @@
   return YES;
 }
 
+- (IBAction)changeMapType:(id)sender 
+{
+  [[NSUserDefaults standardUserDefaults]
+                  setInteger:[sender selectedSegmentIndex]
+                      forKey:WhereamiMapTypePrefKey];
+  
+  switch ([sender selectedSegmentIndex]) {
+    case 0:
+    {
+      [worldView setMapType:MKMapTypeStandard];
+    } break;
+    case 1:
+    {
+      [worldView setMapType:MKMapTypeSatellite];
+    } break;
+    case 2:
+    {
+      [worldView setMapType:MKMapTypeHybrid];
+    } break;
+  }
+}
+
 - (void)findLocation
 {
   [locationManager startUpdatingLocation];
@@ -91,7 +128,7 @@
   [locationTitleField setHidden:YES];
 }
 
-- (void)foundLocation:(CLLocation *)location;
+- (void)foundLocation:(CLLocation *)location
 {
   CLLocationCoordinate2D coord = [location coordinate];
   
@@ -110,6 +147,11 @@
   [locationTitleField setHidden:NO];
   [activityIndicator stopAnimating];
   [locationManager stopUpdatingLocation];
+}
+
+- (void)viewDidUnload {
+  mapTypeControl = nil;
+  [super viewDidUnload];
 }
 
 @end
