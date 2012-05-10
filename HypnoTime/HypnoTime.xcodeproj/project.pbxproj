@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA045515155C0F64001B1533 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA045514155C0F64001B1533 /* QuartzCore.framework */; };
 		DADF4CBD153D09730020DEDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADF4CBC153D09730020DEDF /* UIKit.framework */; };
 		DADF4CBF153D09730020DEDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADF4CBE153D09730020DEDF /* Foundation.framework */; };
 		DADF4CC1153D09730020DEDF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADF4CC0153D09730020DEDF /* CoreGraphics.framework */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA045514155C0F64001B1533 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DADF4CB8153D09730020DEDF /* HypnoTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HypnoTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADF4CBC153D09730020DEDF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DADF4CBE153D09730020DEDF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA045515155C0F64001B1533 /* QuartzCore.framework in Frameworks */,
 				DADF4CBD153D09730020DEDF /* UIKit.framework in Frameworks */,
 				DADF4CBF153D09730020DEDF /* Foundation.framework in Frameworks */,
 				DADF4CC1153D09730020DEDF /* CoreGraphics.framework in Frameworks */,
@@ -64,20 +67,20 @@
 		DADF4CAD153D09730020DEDF = {
 			isa = PBXGroup;
 			children = (
-				DADF4CD3153D09E30020DEDF /* HypnosisViewController.h */,
-				DADF4CD4153D09E30020DEDF /* HypnosisViewController.m */,
-				DADF4CDC153D0AD70020DEDF /* HypnosisView.h */,
-				DADF4CDF153D0C9E0020DEDF /* TimeViewController.h */,
+				DADF4CBB153D09730020DEDF /* Frameworks */,
 				DADF4CE4153D13C90020DEDF /* Hypno.png */,
 				DADF4CE5153D13C90020DEDF /* Hypno@2x.png */,
+				DADF4CDC153D0AD70020DEDF /* HypnosisView.h */,
+				DADF4CDD153D0AD70020DEDF /* HypnosisView.m */,
+				DADF4CD3153D09E30020DEDF /* HypnosisViewController.h */,
+				DADF4CD4153D09E30020DEDF /* HypnosisViewController.m */,
+				DADF4CC2153D09730020DEDF /* HypnoTime */,
+				DADF4CB9153D09730020DEDF /* Products */,
 				DADF4CE6153D13C90020DEDF /* Time.png */,
 				DADF4CE7153D13C90020DEDF /* Time@2x.png */,
-				DADF4CE2153D0D250020DEDF /* TimeViewController.xib */,
+				DADF4CDF153D0C9E0020DEDF /* TimeViewController.h */,
 				DADF4CE0153D0C9E0020DEDF /* TimeViewController.m */,
-				DADF4CDD153D0AD70020DEDF /* HypnosisView.m */,
-				DADF4CC2153D09730020DEDF /* HypnoTime */,
-				DADF4CBB153D09730020DEDF /* Frameworks */,
-				DADF4CB9153D09730020DEDF /* Products */,
+				DADF4CE2153D0D250020DEDF /* TimeViewController.xib */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +95,7 @@
 		DADF4CBB153D09730020DEDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DA045514155C0F64001B1533 /* QuartzCore.framework */,
 				DADF4CBC153D09730020DEDF /* UIKit.framework */,
 				DADF4CBE153D09730020DEDF /* Foundation.framework */,
 				DADF4CC0153D09730020DEDF /* CoreGraphics.framework */,
@@ -295,6 +299,7 @@
 				DADF4CD2153D09730020DEDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
