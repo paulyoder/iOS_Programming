@@ -7,6 +7,7 @@
 //
 
 #import "TimeViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation TimeViewController
 
@@ -53,6 +54,58 @@
   [formatter setTimeStyle:NSDateFormatterMediumStyle];
   
   [timeLabel setText:[formatter stringFromDate:now]];
+  
+  [self bounceTimeLabel];
+}
+
+- (void)spinTimeLabel
+{
+  // Create a basic animation
+  CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+  
+  // fromValue is implied
+  [spin setToValue:[NSNumber numberWithFloat:M_PI * 2.0]];
+  [spin setDuration:1.0];
+  [spin setDelegate:self];
+  
+  // Set the timing function
+  CAMediaTimingFunction *tf = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+  [spin setTimingFunction:tf];
+  
+  // Kick off the animation by adding it to the layer
+  [timeLabel.layer addAnimation:spin forKey:@"spinAnimation"];
+}
+
+- (void)bounceTimeLabel
+{
+  // Create a key frame animation
+  CAKeyframeAnimation *bounce = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+  
+  // Create the values it will pass through
+  CATransform3D forward = CATransform3DMakeScale(1.3, 1.3, 1);
+  CATransform3D back = CATransform3DMakeScale(0.7, 0.7, 1);
+  CATransform3D forward2 = CATransform3DMakeScale(1.2, 1.2, 1);
+  CATransform3D back2 = CATransform3DMakeScale(0.9, 0.9, 1);
+  
+  [bounce setValues:[NSArray arrayWithObjects:
+                     [NSValue valueWithCATransform3D:CATransform3DIdentity],
+                     [NSValue valueWithCATransform3D:forward],
+                     [NSValue valueWithCATransform3D:back],
+                     [NSValue valueWithCATransform3D:forward2],
+                     [NSValue valueWithCATransform3D:back2],
+                     [NSValue valueWithCATransform3D:CATransform3DIdentity],
+                     nil]];
+  
+  // Set the duration
+  [bounce setDuration:0.6];
+  
+  // Animate the layer
+  [timeLabel.layer addAnimation:bounce forKey:@"bounceAnimation"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+  NSLog(@"%@ finished: %d", anim, flag);
 }
 
 @end
